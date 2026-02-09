@@ -18,8 +18,9 @@ public class BookstoreApplication {
 	@Bean
 	public CommandLineRunner createDemoRows(BookRepository bookRepository) {
 		return (args) -> {
-			bookRepository.save(new Book("kirja2", "kirjoittaja2", 2024, "54363634342", 20.00));
-			bookRepository.save(new Book("kirja3", "kirjoittaja3", 1924, "5646634342", 21.00));
+			bookRepository.save(new Book("A Brief History of Time", "Stephen Hawking", 1988, "9780553380163", 17.95));
+        	bookRepository.save(new Book("The Fellowship of the Ring", "J.R.R. Tolkien", 1954, "9780547928210", 22.95));
+        	bookRepository.save(new Book("A Game of Thrones", "George R.R. Martin", 1996, "9780553593716", 25.00));
 		};
 	}
 
