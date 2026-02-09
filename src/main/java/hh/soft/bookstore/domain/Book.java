@@ -13,6 +13,10 @@ public class Book {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long bookId;
 
+    public Long getBookId() {
+    return bookId;
+    }
+
     private String title;
     private String author;
     private int publicationYear;

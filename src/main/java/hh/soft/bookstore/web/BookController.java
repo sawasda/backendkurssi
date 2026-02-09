@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import hh.soft.bookstore.domain.Book;
 import hh.soft.bookstore.repository.BookRepository;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 
 
@@ -28,6 +29,24 @@ public class BookController {
     public String getBooklist(Model model) {
         model.addAttribute("books", bookRepository.findAll());
         return "booklist";
+    }
+
+    @RequestMapping(value = "/add")
+    public String addBook(Model model) {
+        model.addAttribute("book", new Book());
+        return "addbook";
+    }
+
+    @RequestMapping(value = "/save", method=RequestMethod.POST)
+    public String save(Book book) {
+        bookRepository.save(book);
+        return "redirect:booklist";
+    }
+    
+    @RequestMapping(value = "/delete/{id}", method=RequestMethod.GET)
+    public String deleteBook(@PathVariable("id") Long bookId, Model model) {
+        bookRepository.deleteById(bookId);
+        return "redirect:../booklist";
     }
     
 }
