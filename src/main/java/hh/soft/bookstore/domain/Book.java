@@ -1,6 +1,17 @@
 package hh.soft.bookstore.domain;
 
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
+
 public class Book {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long bookId;
 
     private String title;
     private String author;
@@ -56,6 +67,12 @@ public class Book {
 
     public double getPrice() {
         return price;
+    }
+
+    @Override
+    public String toString() {
+        return "Book [bookId=" + bookId + ", title=" + title + ", author=" + author + ", publicationYear="
+                + publicationYear + ", isbn=" + isbn + ", price=" + price + "]";
     }
 
 }
