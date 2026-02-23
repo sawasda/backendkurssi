@@ -12,8 +12,6 @@ import hh.soft.bookstore.repository.BookRepository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 
-
-
 @Controller
 
 public class BookController {

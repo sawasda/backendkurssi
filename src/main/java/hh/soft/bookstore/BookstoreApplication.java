@@ -32,5 +32,4 @@ public class BookstoreApplication {
         	bookRepository.save(new Book("A Game of Thrones", "George R.R. Martin", 1996, "9780553593716", 25.00, category2));
 		};
 	}
-
 }
