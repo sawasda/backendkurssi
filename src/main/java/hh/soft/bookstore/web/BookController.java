@@ -1,5 +1,5 @@
 package hh.soft.bookstore.web;
-
+import hh.soft.bookstore.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,11 +16,14 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 public class BookController {
 
+    private final CategoryRepository categoryRepository;
+
     @Autowired
     private BookRepository bookRepository;
 
-    public BookController(BookRepository bookRepository) {
+    public BookController(BookRepository bookRepository, CategoryRepository categoryRepository) {
         this.bookRepository = bookRepository;
+        this.categoryRepository = categoryRepository;
     }
 
     @GetMapping("/booklist")
@@ -32,6 +35,7 @@ public class BookController {
     @RequestMapping(value = "/add")
     public String addBook(Model model) {
         model.addAttribute("book", new Book());
+        model.addAttribute("categories", categoryRepository.findAll());
         return "addbook";
     }
 
