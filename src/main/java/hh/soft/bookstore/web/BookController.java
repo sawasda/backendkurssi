@@ -58,5 +58,9 @@ public class BookController {
         return "editbook";
     }
     
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
     
 }
