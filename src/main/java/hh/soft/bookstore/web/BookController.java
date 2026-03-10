@@ -1,6 +1,7 @@
 package hh.soft.bookstore.web;
 import hh.soft.bookstore.repository.CategoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -46,6 +47,7 @@ public class BookController {
     }
     
     @RequestMapping(value = "/delete/{id}", method=RequestMethod.GET)
+    @PreAuthorize("hasAuthority('ADMIN')")
     public String deleteBook(@PathVariable("id") Long bookId, Model model) {
         bookRepository.deleteById(bookId);
         return "redirect:../booklist";
